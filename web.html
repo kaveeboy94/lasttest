@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Technology අපි - Home</title>
+   <link rel="stylesheet" href="style.css" />
+  <style>
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('17973908.jpg'); 
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: white;
+    }
+
+
+
+@media (max-width: 480px) {
+  nav {
+    padding: 12px 20px;
+    gap: 15px;
+  }
+
+  nav a {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+}
+
+
+
+  .container {
+  background-color: rgba(18, 18, 18, 0.75); /* Slightly darker and smoother */
+  max-width: 420px; /* Slightly wider for better content fit */
+  margin: 60px auto;
+  padding: 35px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Softer, deeper shadow */
+  backdrop-filter: blur(8px); /* Adds subtle background blur for glass effect */
+  color: #f0f0f0;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+}
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin: 0;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .container {
+        margin: 30px 15px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="login.html">Login</a>
+    <a href="register.html">Create Account</a>
+  </nav>
+
+  <div class="container">
+    <h1 style="
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 3rem;
+  color: rgb(138, 167, 235);
+  text-shadow: 2px 2px 5px rgba(0, 0, 139, 0.5);
+  text-align: center;
+  margin: 20px 0;
+">
+  Technology අපි
+</h1>
+    <p>If you do not have an account, please create one to continue.</p>
+  </div>
+
+</body>
+</html>

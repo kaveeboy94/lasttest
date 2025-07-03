@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('17973908.jpg'); /* Replace with your image path */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #111;
+      max-width: 700px;
+      width: 100%;
+      border-radius: 15px;
+      padding: 30px 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    h2 {
+      font-size: 36px;
+      color: rgb(62, 120, 220);
+      margin-bottom: 20px;
+    }
+
+    #userInfo {
+      font-weight: bold;
+      margin-bottom: 25px;
+      font-size: 20px;
+      color: #222;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background-color: #3e78dc;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #2f5ec7;
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 28px;
+      }
+
+      p, #userInfo {
+        font-size: 16px;
+      }
+
+      button {
+        width: 100%;
+        font-size: 16px;
+        padding: 14px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="one.html">Home</a>
+  </nav>
+
+  <div class="container">
+    <h2>Welcome!</h2>
+    <p>
+      You have successfully logged in. Now you can go to the homepage and enroll for free.
+      When you’re done, feel free to log out.
+    </p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    const user = localStorage.getItem("currentUser");
+    const userInfo = document.getElementById("userInfo");
+    userInfo.textContent = user ? `Logged in as: ${user}` : "Guest";
+
+    function logout() {
+      localStorage.removeItem("currentUser");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

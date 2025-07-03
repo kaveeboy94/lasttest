@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('17973908.jpg'); /* Replace with your image path */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+    }
+
+
+
+    .container {
+      background-color: rgba(18, 18, 18, 0.75);
+      max-width: 420px;
+      margin: 60px auto;
+      padding: 35px 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+      color: #f0f0f0;
+      font-size: 1rem;
+      line-height: 1.5;
+      transition: box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .container:hover {
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #0d6efd;
+      user-select: none;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 15px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 8px #0d6efd;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px 0;
+      margin-top: 15px;
+      background-color: #28a745;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover,
+    button:focus {
+      background-color: #218838;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    #loginMsg {
+      margin-top: 20px;
+      font-weight: 700;
+      font-size: 1rem;
+      min-height: 24px;
+      user-select: none;
+      color: #ffc107; 
+    }
+    @media (max-width: 480px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 12px 20px;
+        gap: 15px;
+      }
+
+      .container {
+        margin: 30px 15px;
+        padding: 25px 20px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      input {
+        padding: 12px 12px;
+        font-size: 0.95rem;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 13px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Create Account</a>
+  </nav>
+
+  <div class="container">
+    <h2>Login</h2>
+    <input type="text" id="loginUsername" placeholder="Username" required />
+    <input type="password" id="loginPassword" placeholder="Password" required />
+    <button onclick="login()">Login</button>
+    <p id="loginMsg"></p>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById('loginUsername').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      const storedUser = localStorage.getItem(username);
+
+      if (!username || !password) {
+        setMessage('Please fill in both fields.', 'warning');
+        return;
+      }
+
+      if (!storedUser) {
+        setMessage('User does not exist.', 'warning');
+        return;
+      }
+
+      try {
+        const userData = JSON.parse(storedUser);
+        if (userData.password === password) {
+          setMessage('Login successful!', 'success');
+          localStorage.setItem('currentUser', username);
+          setTimeout(() => {
+            window.location.href = 'welcome.html'; 
+          }, 1500);
+        } else {
+          setMessage('Invalid credentials!', 'warning');
+        }
+      } catch {
+        setMessage('Corrupted user data!', 'warning');
+      }
+    }
+
+    function setMessage(text, type) {
+      const msg = document.getElementById('loginMsg');
+      msg.textContent = text;
+      msg.style.color = type === 'success' ? '#28a745' : '#ffc107';
+    }
+  </script>
+
+</body>
+</html>
